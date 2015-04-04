@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 #assign landmark nodes
+#e.g. python landmark.py -file node.txt -b 3 
 
 import sys
 import random
@@ -39,7 +40,7 @@ while run:
     high += 1
 
 #save values in landmark.txt ("node=rank")
-fname = 'landmark.txt'
+fname = 'rank.txt'
 with open(fname, 'w') as fout:
     for node in nodes:
         level = rank[node]
