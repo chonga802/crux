@@ -18,9 +18,10 @@ if b==1:
 fileName = args.file
 #read from file to make array of nodes
 nodes = []
-with open(fileName, 'r') as f:
-    for line in f:
-        nodes.append(line.rstrip('\n'))
+f = open(fileName, 'r')
+for line in f:
+    nodes.append(line.rstrip('\n'))
+f.close()
 #assign level 0 to all nodes initially in rank
 rank = dict()
 for node in nodes:
@@ -44,8 +45,9 @@ while run:
 
 #save values in landmark.txt ("node=rank")
 fname = 'rank.txt'
-with open(fname, 'w') as fout:
-    for node in nodes:
-        level = rank[node]
-        fout.write("%s=%d\n" % (node,level))
+fout = open(fname, 'w')
+for node in nodes:
+    level = rank[node]
+    fout.write("%s=%d\n" % (node,level))
+fout.close()
 

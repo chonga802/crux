@@ -13,9 +13,10 @@ parser.add_argument('-nodes')
 args = parser.parse_args()
 nodeFile = args.nodes
 nodes = []
-with open(nodeFile, 'r') as f:
-    for line in f:
-        nodes.append(line.rstrip('\n'))
+f = open(nodeFile, 'r')
+for line in f:
+    nodes.append(line.rstrip('\n'))
+f.close()
 
 #call ssh
 for node in nodes:

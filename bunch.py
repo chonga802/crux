@@ -14,19 +14,21 @@ pingList = args.ping
 rankList = args.rank
 #sort ping list
 sortedPings = []
-with open(pingList, 'r') as p:
-    for line in p:
-        sortedPings.append(line.rstrip('\n'))
+p = open(pingList, 'r')
+for line in p:
+    sortedPings.append(line.rstrip('\n'))
+p.close()
 sortedPings.sort(key=lambda x: x.split('=')[1])
 print "sortedPings = "
 print sortedPings
 #make dictionary of ranks (<node,rank>)
 rank = dict()
-with open(rankList, 'r') as r:
-    for line in r:
-        line = line.rstrip('\n')
-        words = line.split('=')
-        rank[words[0]] = words[1]
+r = open(rankList, 'r')
+for line in r:
+    line = line.rstrip('\n')
+    words = line.split('=')
+    rank[words[0]] = words[1]
+r.close()
 print "rank="
 print rank
 
@@ -41,6 +43,7 @@ for line in sortedPings:
 print "bunch="
 print bunch
 #save bunch in bunch.txt 
-with open("bunch.txt", 'w') as fout:
-    for b in bunch:
-        fout.write(b + "\n")
+fout = open("bunch.txt", 'w')
+for b in bunch:
+    fout.write(b + "\n")
+fout.close()
