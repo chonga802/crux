@@ -37,5 +37,10 @@ if __name__ == "__main__":
 
     # Sort and output the pairs.
     pairs.sort()
-    for p in pairs:
-        print p
+    fname = 'pairs.txt'
+    with open(fname,'w') as fout:
+        for p in pairs:
+            fout.write(p + "\n")
+
+
+    
