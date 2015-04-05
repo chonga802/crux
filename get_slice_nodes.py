@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#python get_slice_nodes.py nodes.txt christine.hong@yale.edu
 
 import sys
 import xmlrpclib

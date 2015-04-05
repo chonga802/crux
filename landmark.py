@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #assign landmark nodes
-#e.g. python landmark.py -file node.txt -b 3 
+#e.g. python landmark.py -file nodes.txt -b 3 
 
 import sys
 import random
@@ -12,6 +12,9 @@ parser.add_argument('-b', type=int)
 parser.add_argument('-file')
 args = parser.parse_args()
 b = args.b
+if b==1:
+    print "b must be greater than 1"
+    sys.exit()
 fileName = args.file
 #read from file to make array of nodes
 nodes = []
