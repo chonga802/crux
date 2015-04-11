@@ -27,15 +27,15 @@ subprocess.call(["mkdir", "pl_pings"])
 for node in nodes:
     print "testing " + node + "\n"
     # copy pings to local
-    p = subprocess.Popen(["scp", "yale_dissent@" + node + ":/home/yale_dissent/crux/pings.txt", "."])
+    p = subprocess.Popen(["scp", "yale_dissent@" + node + ":/home/yale_dissent/crux/bunch.txt", "."])
     # kill process if we freeze
     time.sleep(3.0)
     p.kill()
     # move files and rename
-    fname = "pl_pings/" + node + "_pings.txt"
+    fname = "pl_pings/" + node + "_bunch.txt"
     subprocess.call(["touch", fname])
     f = open(fname, "w")
     # remove first column of pings, which is just name of host
-    subprocess.call(["cut", "-d", ' ', "-f", "2-", "pings.txt"], stdout=f)
-    subprocess.call(["rm", "pings.txt"])
+    subprocess.call(["cut", "-d", ' ', "-f", "2-", "bunch.txt"], stdout=f)
+    subprocess.call(["rm", "bunch.txt"])
 
