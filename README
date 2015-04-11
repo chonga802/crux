@@ -2,6 +2,7 @@ Run this sequence of commands in order:
 python get_slice_nodes.py nodes.txt christine.hong@yale.edu
 python landmark.py -file nodes.txt -b 3 
 python makeHostPairList.py nodes.txt
+python filesToPlanetLab.py -nodes nodes.txt
 ssh yale_dissent@[host_name]
 bash pingNodePairs.sh pairs.txt
 python bunch.py -ping pings.txt -rank rank.txt
