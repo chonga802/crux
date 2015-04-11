@@ -3,6 +3,8 @@
 # This program reads a file of tokens, one per line, and outputs
 # all unique pairs (i.e., ordering does not matter).
 
+#python makeHostPairList.py nodes.txt
+
 import random
 import sys
 

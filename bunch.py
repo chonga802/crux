@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #create bunch list
-#e.g. python bunch.py -ping ping.txt -rank rank.txt
+#e.g. python bunch.py -ping pings.txt -rank rank.txt
 
 import sys
 # import argparse

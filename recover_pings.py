@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#download files onto planetlab node using github
+#download files onto planetlab node using scp
 #e.g. python recover_pings.py -nodes nodes.txt
 
 import sys
