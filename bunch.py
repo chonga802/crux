@@ -3,15 +3,26 @@
 #e.g. python bunch.py -ping ping.txt -rank rank.txt
 
 import sys
-import argparse
+# import argparse
+from optparse import OptionParser
 
 #read flags
-parser = argparse.ArgumentParser()
-parser.add_argument('-ping')
-parser.add_argument('-rank')
-args = parser.parse_args()
-pingList = args.ping
-rankList = args.rank
+# parser = argparse.ArgumentParser()
+# parser.add_argument('-ping')
+# parser.add_argument('-rank')
+# args = parser.parse_args()
+# pingList = args.ping
+# rankList = args.rank
+parser = OptionParser()
+parser.add_option('-ping')
+parser.add_option('-rank')
+(option, args) = parser.parse_args()
+pingList = options.ping
+rankList = options.rank
+print "ping list"
+print pingList
+print "rank list"
+print rankList
 #sort ping list
 sortedPings = []
 p = open(pingList, 'r')
