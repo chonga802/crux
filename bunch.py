@@ -5,6 +5,7 @@
 import sys
 # import argparse
 from optparse import OptionParser
+from decimal import Decimal
 
 #read flags
 # parser = argparse.ArgumentParser()
@@ -14,24 +15,21 @@ from optparse import OptionParser
 # pingList = args.ping
 # rankList = args.rank
 parser = OptionParser()
-parser.add_option('-ping')
-parser.add_option('-rank')
+parser.add_option('--ping')
+parser.add_option('--rank')
 (option, args) = parser.parse_args()
-pingList = options.ping
-rankList = options.rank
-print "ping list"
-print pingList
-print "rank list"
-print rankList
+pingList = option.ping
+rankList = option.rank
 #sort ping list
 sortedPings = []
 p = open(pingList, 'r')
 for line in p:
-    sortedPings.append(line.rstrip('\n'))
+    x = line.split(' ')
+    #skip dead nodes
+    if len(x)==4:
+	sortedPings.append(x[1] + "=" + x[2])
 p.close()
-sortedPings.sort(key=lambda x: x.split('=')[1])
-print "sortedPings = "
-print sortedPings
+sortedPings.sort(key=lambda x: Decimal(x.split('=')[1]))
 #make dictionary of ranks (<node,rank>)
 rank = dict()
 r = open(rankList, 'r')
@@ -40,21 +38,18 @@ for line in r:
     words = line.split('=')
     rank[words[0]] = words[1]
 r.close()
-print "rank="
-print rank
 
 bunch = []
 maxLandmark = 0
-for line in sortedPings:
-    node = line.split('=')[0]
+for item in sortedPings:
+    node = item.split('=')[0]
+    pingTime = item.split('=')[1]
     r = rank[node]
     if r >= maxLandmark:
-        bunch.append(node)
+        bunch.append((node, pingTime))
         maxLandmark = r
-print "bunch="
-print bunch
 #save bunch in bunch.txt 
 fout = open("bunch.txt", 'w')
 for b in bunch:
-    fout.write(b + "\n")
+    fout.write(b[0] + " " + b[1] +  "\n")
 fout.close()

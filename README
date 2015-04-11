@@ -4,8 +4,9 @@ python landmark.py -file nodes.txt -b 3
 python makeHostPairList.py nodes.txt
 python filesToPlanetLab.py -nodes nodes.txt
 ssh yale_dissent@[host_name]
-bash pingNodePairs.sh pairs.txt
-python bunch.py -ping pings.txt -rank rank.txt
+cd crux
+./pingNodePairs.sh pairs.txt
+python bunch.py --ping pings.txt --rank rank.txt
 python recover_pings.py -nodes nodes.txt
 
 
