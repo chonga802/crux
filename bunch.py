@@ -3,17 +3,11 @@
 #e.g. python bunch.py -ping pings.txt -rank rank.txt
 
 import sys
-# import argparse
 from optparse import OptionParser
 from decimal import Decimal
+import socket
 
 #read flags
-# parser = argparse.ArgumentParser()
-# parser.add_argument('-ping')
-# parser.add_argument('-rank')
-# args = parser.parse_args()
-# pingList = args.ping
-# rankList = args.rank
 parser = OptionParser()
 parser.add_option('--ping')
 parser.add_option('--rank')
@@ -27,7 +21,7 @@ for line in p:
     x = line.split(' ')
     #skip dead nodes
     if len(x)==4:
-	sortedPings.append(x[1] + "=" + x[2])
+	   sortedPings.append(x[1] + "=" + x[2])
 p.close()
 sortedPings.sort(key=lambda x: Decimal(x.split('=')[1]))
 #make dictionary of ranks (<node,rank>)

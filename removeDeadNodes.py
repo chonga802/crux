@@ -26,6 +26,8 @@ for node in nodes:
         s.connect((node, 22))
         aliveNode.append(node)
     except socket.error:
+    	continue
+
 #save bunch in aliveNodes.txt
 fout = open("aliveNodes.txt", 'w')
 for node in aliveNodes:

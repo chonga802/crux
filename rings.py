@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#create bunch list
+#create list of items within rings
 #e.g. python rings.py --c cluster.txt --min 2 --max 20
 
 import sys
