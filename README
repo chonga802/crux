@@ -12,9 +12,15 @@ python landmark.py -file nodes.txt -b 3
 #constructs all pairs of nodes -> creates pairs.txt
 python makeHostPairList.py nodes.txt
 
-#puts all the files onto the planet lab nodes
+#puts all the files onto the planet lab nodes (or just do it from folder)
 python filesToPlanetLab.py -item pairs.txt -nodes nodes.txt
 python filesToPlanetLab.py -item pingNodePairs.sh -nodes nodes.txt
+python filesToPlanetLab.py -item rank.txt -nodes nodes.txt
+python filesToPlanetLab.py -item bunch.py -nodes nodes.txt
+
+or 
+
+python filesToPlanetLab.py -item plStuff -nodes nodes.txt
 
 #sshes into all nodes and runs command to create pings.txt and create bunch.txt
 python pingAndBunch.py -nodes nodes.txt
@@ -27,13 +33,3 @@ python configure_clusters.py -nodes nodes.txt
 
 #create ring list for every cluster -> all rings saved locally into a ring folder
 python rings.py --c cluster.txt --min 2 --max 20
-
-
-
-
-
-
-
-
-
-
