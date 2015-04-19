@@ -1,6 +1,6 @@
 ## Python implementation of the Crux scheme for a transactional trading database
 ##
-## 
+## Christine Hong; Kojiro Murase; Sage Price
 ##
 ## 
 ## 
@@ -10,8 +10,10 @@
 import subprocess
 import time
 import os
+import socket
 
-
+# Construction of rings A
+# Given list of ports, makes Mongo databases on those ports centered on local host
 def build_rings (mpath, portlist):
 
 	for port in portlist:
@@ -21,18 +23,14 @@ def build_rings (mpath, portlist):
 
 		# out = subprocess.check_output(["echo", "Hello World!"])
 
-		subprocess.Popen([mpath + '/mongod', '--dbpath', mpath+'/data'+port, '--port', port])#, stdout=subprocess.PIPE)	
-		# out = p.communicate()[0]
-		# print out
+		p = subprocess.Popen([mpath + '/mongod', '--dbpath', mpath+'/data'+port, '--port', port], stdout=subprocess.PIPE)
+		# result = p.communicate()[0]
+		# print "STARTED:" + result
 
 	return
 
-def post_trade ():
-
-	
-
-	return
-
+# Destruction of rings A
+# Given list of ports, shuts down Mongo databases on those ports centered on local host
 def kill_rings (mpath, portlist):
 
 	for port in portlist:
@@ -41,79 +39,85 @@ def kill_rings (mpath, portlist):
 
 	return
 
+# t_type is "WANT"/"SELL"
+# t_id is object ID
+# username contains information for direct connection to poster of trade
+def post_trade (mpath, host, port, t_type, t_id, username):
+
+	command = "db.trades.insert({type:'"+t_type+"', object: '"+t_id+"', user: '"+username+"'})"
+
+	p = subprocess.Popen([mpath + "/mongo", "--eval", command], stdout=subprocess.PIPE)
+	result = p.communicate()[0]
+	print "TRADE OUT:" + result
+
+	return
+
+def find_trade (mpath, host, port, t_id):
+
+	command = "var myCursor = db.trades.find({object: '"+t_id+"'}); \
+myCursor.forEach(printjson);"
+
+	p = subprocess.Popen([mpath + "/mongo", "--port", port, "--host", host, "--eval", command], stdout=subprocess.PIPE)
+	result = p.communicate()[0]
+	print "TRADE FOUND:" + result
+
+	return
+
+# Drops given collection
+def clear_collection (mpath, host, port, db_name):
+
+	p = subprocess.Popen([mpath + "/mongo", "--eval", "db."+db_name+".drop()"], stdout=subprocess.PIPE)
+	result = p.communicate()[0]
+	print "CLEARED:" + result
+
+	return
+
+# Shows available collections
+def show_collections (mpath, host, port):
+
+	p = subprocess.Popen([mpath + "/mongo", "--port", port, "--eval", "db.getCollectionNames()"], stdout=subprocess.PIPE)
+	result = p.communicate()[0]
+	print "COLLECTIONS:" + result
+
+	return
+
+
 # Location of mongod program
 mpath = "/home/accts/km637/mongodb-linux-i686-3.0.1/bin"
+# Local host name
+localhost = socket.gethostname()
+
+build_rings (mpath, portlist)
+
+# maybe later fix so that read pipe, resume when rings are set up
+time.sleep(1)
+
+####################################################
+# Example instance
 
 portlist = ["27017","27018"]
 
 bunchfile = [("turtle", "27017")]
 
-build_rings (mpath, portlist)
+# post_trade (mpath, "", portlist, "HAVE", "123", "Koji")
 
-time.sleep(1)
+for i in range(10):
+	find_trade(mpath, localhost, "27017", "123")
 
-# out = subprocess.check_output([mpath + "/mongo", "--eval", "db.adminCommand('listDatabases')"])
-
-# print out*10
-
-# out = subprocess.check_output([mpath + "/mongo", "--eval", "db.trades.insert({item:'card', qty: 15})"])
-
-# print out*10
-
-# out = subprocess.check_output([mpath + "/mongo", "--eval", "db.getCollectionNames()"])
-
-# print out*10
-
-
+# 	show_collections(mpath, "", "27017")
 
 time.sleep(1)
 
 kill_rings (mpath, portlist)
 
-# subprocess.Popen([mongodpath + '/mongod', '--dbpath', mongodpath+'/data', '--port', '27017'])
-
-# # out = subprocess.Popen([mongodpath + '/mongod', '--dbpath', mongodpath+'/data2', '--port', '27018'])
-
-# time.sleep(1)
-
-# print "\n"*10
-
-# out = subprocess.check_output([mongodpath + '/mongo', '--eval', 'printjson(db.getCollectionNames())'])
-
+# out = subprocess.check_output([mpath + "/mongo", "--eval", "db.adminCommand('listDatabases')"])
 # print out*10
 
+# out = subprocess.check_output([mongodpath + '/mongo', '--eval', 'printjson(db.getCollectionNames())'])
+# print out*10
 # print "\n"*10
 
 # time.sleep(1)
-
-
-# client = MongoClient('localhost', 27017)
-
-# db = client.test_database
-
-# post = {"author": "Mike"}
-
-# posts = db.posts
-# post_id = posts.insert_one(post).inserted_id
-# print post_id
-
-# print db.collection_names(include_system_collections=False)
-
-# client2 = MongoClient('localhost', 27018)
-
-# db = client2.test_database
-
-# post = {"author": "Mike"}
-
-# posts = db.posts
-# post_id = posts.insert_one(post).inserted_id
-# print post_id
-
-# print db.collection_names(include_system_collections=False)
-
-
-# subprocess.Popen([mongodpath + '/mongod', '--dbpath', mongodpath+'/data', '--shutdown'])
-# subprocess.Popen([mongodpath + '/mongod', '--dbpath', mongodpath+'/data2', '--shutdown'])
 
 
 def ask (trade):
