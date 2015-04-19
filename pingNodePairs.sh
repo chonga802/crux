@@ -18,7 +18,7 @@ grep "^${Me}" $1 | cut -d ' ' -f 2 > $TempFile
 
 # Do the pings and output the results.
 while read dest; do
-
+  echo "doing ping"
   PingResult=$(ping -q -c $Count -i $Interval $dest | tail -n 1)
   Vals=$(echo $PingResult | cut -d ' ' -f 4 | cut -d '/' -f 1-2 | tr '/' ' ')
   echo  "$Me $dest $Vals" >> $PingFile
