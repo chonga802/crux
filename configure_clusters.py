@@ -7,6 +7,7 @@
 import sys
 import argparse
 from decimal import Decimal
+import subprocess
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-nodes')

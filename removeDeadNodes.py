@@ -20,12 +20,17 @@ for line in f:
 f.close()
 #ping each node, if no response after 5 seconds, don't add node to aliveNodees
 aliveNodes = []
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 for node in nodes:
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(10)
     try:
+        print "trying to connect to node"
         s.connect((node, 22))
-        aliveNode.append(node)
+        aliveNodes.append(node)
+        s.close()
     except socket.error:
+    	s.close()
+
 #save bunch in aliveNodes.txt
 fout = open("aliveNodes.txt", 'w')
 for node in aliveNodes:

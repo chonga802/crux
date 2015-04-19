@@ -1,4 +1,0 @@
-planetlab1.csee.usf.edu 1.501
-planetlab-3.cmcl.cs.cmu.edu 34.918
-planetlab-01.vt.nodes.planet-lab.org 38.863
-lefthand.eecs.harvard.edu 41.110
