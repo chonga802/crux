@@ -1,0 +1,5 @@
+ladybug.zoo.cs.yale.edu 27017
+ladybug.zoo.cs.yale.edu 27018
+ladybug.zoo.cs.yale.edu 27019
+chameleon.zoo.cs.yale.edu 27017
+chameleon.zoo.cs.yale.edu 27018

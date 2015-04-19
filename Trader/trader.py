@@ -13,9 +13,34 @@ import os
 import socket
 import sys
 
+# Given file listing local ports on which to build rings, returns in list form
+def parse_ports(fn):
+
+	f = open(fn)
+	l = f.read().splitlines()
+
+	return l
+
+# Given file listing bunches to search returns as list of tuples
+def parse_bunch(fn):
+
+	b = []
+
+	f = open(fn)
+	l = f.read().splitlines()
+
+	for elt in l:
+		s = elt.split()
+		b.append((s[0],s[1]))
+
+	return b
+
 # Construction of rings A
 # Given list of ports, makes Mongo databases on those ports centered on local host
 def build_rings (mpath, host, portlist):
+
+	print "-"*40
+	print "Building on ports", portlist
 
 	host = host.split(".")[0]
 
@@ -51,32 +76,73 @@ def kill_rings (mpath, host, portlist):
 # t_type is "WANT"/"SELL"
 # t_id is object ID
 # username contains information for direct connection to poster of trade
-def post_trade (mpath, host, port, t_type, t_id, username):
+def post_instance (mpath, host, port, t_type, t_id, username):
 
 	command = "db.trades.insert({type:'"+t_type+"', object: '"+t_id+"', user: '"+username+"'})"
 
-	p = subprocess.Popen([mpath + "/mongo", "--eval", command], stdout=subprocess.PIPE)
+	p = subprocess.Popen([mpath + "/mongo", "--port", port, "--host", host, "--eval", command], stdout=subprocess.PIPE)
 	result = p.communicate()[0]
 	print "TRADE OUT:" + result
 
 	return
 
 # Finds trade entry based on given object id t_id
-def find_trade (mpath, host, port, t_id):
+def find_instance (mpath, host, port, t_id):
 
 	command = "var myCursor = db.trades.find({object: '"+t_id+"'}); \
 myCursor.forEach(printjson);"
 
 	p = subprocess.Popen([mpath + "/mongo", "--port", port, "--host", host, "--eval", command], stdout=subprocess.PIPE)
 	result = p.communicate()[0]
-	print "TRADE FOUND:" + result
+	print "FINDING TRADE:" + result
+
+	if "object" in result:
+		return result
+	else:
+		return "NO MATCH"
+
+	return
+
+# Post given trade in all rings of bunch
+def post_all (mpath, bunch, t_type, t_id, localhost) :
+
+	for b in bunch:
+		post_instance(mpath, b[0], b[1], t_type, t_id, localhost)
+
+	return
+
+# Search all rings until given trade found
+def find_all (mpath, bunch, t_id):
+
+	result = "NO MATCH"
+
+	for b in bunch:
+		result = find_instance(mpath, b[0], b[1], t_id)
+
+		# As soon as item found, stop searching rings
+		if result != "NO MATCH":
+			break
+
+	if result == "NO MATCH":
+
+		print "Could not find any matches for " + t_id
+
+	else:
+
+		print "FOUND MATCH! " + t_id
+
+		for line in result.split("\n"):
+			line = line.strip().split()
+
+			if line and line[0] == '"user"':
+				print "DIRECTLY CONTACTING " + line[2] + " TO ARRANGE TRANSACTION"
 
 	return
 
 # Drops given collection
 def clear_collection (mpath, host, port, db_name):
 
-	p = subprocess.Popen([mpath + "/mongo", "--eval", "db."+db_name+".drop()"], stdout=subprocess.PIPE)
+	p = subprocess.Popen([mpath + "/mongo", "--port", port, "--host", host, "--eval", "db."+db_name+".drop()"], stdout=subprocess.PIPE)
 	result = p.communicate()[0]
 	print "CLEARED:" + result
 
@@ -85,9 +151,28 @@ def clear_collection (mpath, host, port, db_name):
 # Shows available collections
 def show_collections (mpath, host, port):
 
-	p = subprocess.Popen([mpath + "/mongo", "--port", port, "--eval", "db.getCollectionNames()"], stdout=subprocess.PIPE)
+	p = subprocess.Popen([mpath + "/mongo", "--port", port, "--host", host, "--eval", "db.getCollectionNames()"], stdout=subprocess.PIPE)
 	result = p.communicate()[0]
 	print "COLLECTIONS:" + result
+
+	return
+
+# Run commands from given instruction file
+def run_instructions (fn, mpath, localhost, portlist, bunch):
+
+	f = open(fn)
+
+	for instr in f:
+		i = instr.split()
+
+		if i[0] == "post":
+
+			post_all(mpath, bunch, i[1], i[2], localhost)
+
+		elif i[0] == "find":
+
+			find_all(mpath, bunch, i[1])
+
 
 	return
 
@@ -95,35 +180,43 @@ def show_collections (mpath, host, port):
 
 def main(argv):
 
+	if len(argv) < 3:
+		print "Call as trader.py [port file] [bunch file] [instructions file]"
+		return
+
+	portlist = parse_ports(argv[0])
+	bunch = parse_bunch(argv[1])
+
 	# Location of mongod program
 	mpath = "/home/accts/km637/mongodb-linux-i686-3.0.1/bin"
+
 	# Local host name
 	localhost = socket.gethostname()
-
-	portlist = ["27017","27018"]
-	bunchfile = [("chameleon.zoo.cs.yale.edu", "27017"),("ladybug.zoo.cs.yale.edu", "27017")]
 
 
 	build_rings (mpath, localhost, portlist)
 
 	# maybe later fix so that read pipe, resume when rings are set up
-	time.sleep(1)
+	inp = raw_input("Any key to continue: ")
 
-	# clear_collection (mpath, localhost, "27017", "trades")
+	if inp != "n":
 
-	# post_trade (mpath, "", portlist, "HAVE", "123", "Koji")
+		# post_trade (mpath, "", portlist, "HAVE", "123", "Koji")
+		run_instructions(argv[2], mpath, localhost, portlist, bunch)
 
+		# for i in range(10):
+		# 	find_trade(mpath, localhost, "27017", "123")
 
-	for i in range(10):
-		find_trade(mpath, localhost, "27017", "123")
+		# 	show_collections(mpath, "", "27017")
 
-	# 	show_collections(mpath, "", "27017")
+	inp = raw_input("Any key to quit: ")
 
-	time.sleep(1)
+	if inp != "n":
 
-	inp = raw_input("quit: ")
+		# clear out stuff from earlier tests
+		for p in portlist:
+			clear_collection (mpath, localhost, p, "trades")
 
-	if inp == "y":
 		kill_rings (mpath, localhost, portlist)
 
 

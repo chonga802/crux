@@ -1,0 +1,3 @@
+post SELL stone
+find stone
+find gold
