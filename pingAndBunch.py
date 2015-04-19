@@ -20,9 +20,9 @@ for line in f:
     nodes.append(line.rstrip('\n'))
 f.close()
 
-command = ""
 #parallel ssh into all nodes and run two commands
 for node in nodes:
-    command = command + "ssh -o StrictHostKeyChecking=no yale_dissent@" + node + " \"cd plStuff; sh pingNodePairs.sh pairs.txt; python bunch.py --ping pings.txt --rank rank.txt\";"
-
-subprocess.Popen([command], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    command = "ssh -o StrictHostKeyChecking=no yale_dissent@" + node + " \"cd plStuff; sh pingNodePairs.sh pairs.txt; python bunch.py --ping pings.txt --rank rank.txt\";"
+    p = subprocess.Popen([command], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print "added " + node
+p.wait(900)
