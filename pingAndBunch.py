@@ -20,21 +20,9 @@ for line in f:
     nodes.append(line.rstrip('\n'))
 f.close()
 
-#parallely ssh into all nodes and run two commands
+command = ""
+#parallel ssh into all nodes and run two commands
 for node in nodes:
-    print "testing " + node + "\n"
-    #ssh into node
-    ssh = subprocess.Popen(["ssh", "yale_dissent@" + node, "uname -a"], 
-    	shell=False, 
-    	stdout=subprocess.PIPE, 
-    	stderr=subprocess.PIPE)
-    result = ssh.stdout.readlines()
-    if result == []:
-    	error = ssh.stderr.readlines()
-    	print >>sys.stderr, "ERROR: %s" % error
-    else: 
-    	print result
-    #create list of ping times of all pairs and save in pings.txt
-    subprocess.call(["./pingNodePairs.sh", "pairs.txt"])
-	#takes landmark (rank) data and ping data and constructs a bunch file for current node
-	subprocess.call(["python", "bunch.py", "--ping",  "pings.txt",  "--rank", "rank.txt"]
+    command = command + "ssh -o StrictHostKeyChecking=no yale_dissent@" + node + " \"cd plStuff; sh pingNodePairs.sh pairs.txt; python bunch.py --ping pings.txt --rank rank.txt\";"
+
+subprocess.Popen([command], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
