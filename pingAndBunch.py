@@ -22,7 +22,7 @@ f.close()
 
 #parallel ssh into all nodes and run two commands
 for node in nodes:
-    command = "ssh -o StrictHostKeyChecking=no yale_dissent@" + node + " \"cd plStuff; sh pingNodePairs.sh pairs.txt; python bunch.py --ping pings.txt --rank rank.txt\";"
+    command = "ssh -o StrictHostKeyChecking=no yale_dissent@" + node + " \"cd plStuff; rm pings.txt;sh pingNodePairs.sh pairs.txt; rm bunch.txt; python bunch.py --ping pings.txt --rank rank.txt\";"
     p = subprocess.Popen([command], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print "added " + node
 p.wait(900)
