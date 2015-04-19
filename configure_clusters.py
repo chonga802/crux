@@ -13,16 +13,21 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-nodes')
 args = parser.parse_args()
 nodes = args.nodes
+n = open(nodes,'r')
 
 subprocess.call(["rm", "-r", "clusters"])
 subprocess.call(["mkdir", "clusters"])
 
 # for each node
-for node in nodes:
+for node in n:
+    print "configuring cluster for " + node
+    node = node.rstrip('\n')
     ncluster = node + "_cluster.txt"
     cluster = []
     # for each bunchfile
-    for target in nodes:
+    for target in n:
+        print "target is " + target
+        target = target.rstrip('\n')
         nodef = "pl_pings/" + target + "_file.txt"
         f = open(nodef, 'r')
         for line in f.splitlines():
