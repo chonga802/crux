@@ -32,4 +32,4 @@ python recover_bunches.py -nodes nodes.txt
 python configure_clusters.py -nodes nodes.txt
 
 #create ring list for every cluster -> all rings saved locally into a ring folder
-python rings.py --c cluster.txt --min 2 --max 20
+python rings.py --min 2 --max 20
