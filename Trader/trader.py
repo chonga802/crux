@@ -19,15 +19,17 @@ def build_rings (mpath, portlist):
 		if not os.path.exists(mpath+'/data'+port):
 			os.makedirs(mpath+'/data'+port)
 
-		p = subprocess.Popen([mpath + '/mongod', '--dbpath', mpath+'/data'+port, '--port', port], stdout=subprocess.PIPE)	
-		out = p.communicate()[0]
-		print out
+		# out = subprocess.check_output(["echo", "Hello World!"])
+
+		subprocess.Popen([mpath + '/mongod', '--dbpath', mpath+'/data'+port, '--port', port])#, stdout=subprocess.PIPE)	
+		# out = p.communicate()[0]
+		# print out
 
 	return
 
 def post_trade ():
 
-
+	
 
 	return
 
