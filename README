@@ -23,7 +23,7 @@ or
 python filesToPlanetLab.py -item plStuff -nodes nodes.txt
 
 #sshes into all nodes and runs command to create pings.txt and create bunch.txt
-python pingAndBunch.py -nodes nodes.txt
+sh pingAndBunch.sh nodes.txt
 
 #return to local computer and recover bunches -> all bunches saved locally to pl_pings folder
 python recover_bunches.py -nodes nodes.txt
