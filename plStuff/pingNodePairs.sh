@@ -1,7 +1,7 @@
 #!/bin/bash
 
-Count=5     # How many ping packets?
-Interval=5  # How many seconds between pings?
+Count=3     # How many ping packets?
+Interval=3  # How many seconds between pings?
 Column=1    # Get the minimum or the averag? Min is 1, Avg is 2
 
 TempFile=temp.txt
