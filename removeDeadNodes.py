@@ -24,7 +24,7 @@ for node in nodes:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(10)
     try:
-        print "trying to connect to node"
+        print "trying to connect to "+node
         s.connect((node, 22))
         aliveNodes.append(node)
         s.close()
