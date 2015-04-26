@@ -22,5 +22,6 @@ f.close()
 
 #call ssh
 for node in nodes:
+    print 'copying files in '+item+' to '+node
     p = subprocess.Popen(["scp","-r", item, "yale_dissent@" + node + ":/home/yale_dissent"])
     sts = os.waitpid(p.pid, 0)
