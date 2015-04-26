@@ -1,4 +1,5 @@
 #!/bin/bash
+# deprecated, use python script instead
 filename="$1"
 while read -r line
 do
