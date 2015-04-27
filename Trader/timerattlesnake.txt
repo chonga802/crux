@@ -1,0 +1,421 @@
+2015-04-27T16:31:40.885-0400 I CONTROL  
+2015-04-27T16:31:40.885-0400 W CONTROL  32-bit servers don't have journaling enabled by default. Please use --journal if you want durability.
+2015-04-27T16:31:40.885-0400 I CONTROL  
+2015-04-27T16:31:40.886-0400 I CONTROL  
+2015-04-27T16:31:40.888-0400 W CONTROL  32-bit servers don't have journaling enabled by default. Please use --journal if you want durability.
+2015-04-27T16:31:40.888-0400 I CONTROL  
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] MongoDB starting : pid=11559 port=27017 dbpath=/home/accts/km637/mongodb-linux-i686-3.0.1/bin/data_at_rattlesnake_27017 32-bit host=rattlesnake.zoo.cs.yale.edu
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] 
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] ** NOTE: This is a 32 bit MongoDB binary.
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] **       32 bit builds are limited to less than 2GB of data (or less with --journal).
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] **       Note that journaling defaults to off for 32 bit and is currently off.
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] **       See http://dochub.mongodb.org/core/32bit
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] 
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] 
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] 
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] db version v3.0.1
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] git version: 534b5a3f9d10f00cd27737fbcd951032248b5952
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] build info: Linux build8.nj1.10gen.cc 2.6.32-431.3.1.el6.x86_64 #1 SMP Fri Jan 3 21:39:27 UTC 2014 x86_64 BOOST_LIB_VERSION=1_49
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] allocator: tcmalloc
+2015-04-27T16:31:40.902-0400 I CONTROL  [initandlisten] options: { net: { port: 27017 }, storage: { dbPath: "/home/accts/km637/mongodb-linux-i686-3.0.1/bin/data_at_rattlesnake_27017" } }
+2015-04-27T16:31:40.907-0400 I CONTROL  [initandlisten] MongoDB starting : pid=11560 port=27018 dbpath=/home/accts/km637/mongodb-linux-i686-3.0.1/bin/data_at_rattlesnake_27018 32-bit host=rattlesnake.zoo.cs.yale.edu
+2015-04-27T16:31:40.907-0400 I CONTROL  [initandlisten] 
+2015-04-27T16:31:40.907-0400 I CONTROL  [initandlisten] ** NOTE: This is a 32 bit MongoDB binary.
+2015-04-27T16:31:40.907-0400 I CONTROL  [initandlisten] **       32 bit builds are limited to less than 2GB of data (or less with --journal).
+2015-04-27T16:31:40.907-0400 I CONTROL  [initandlisten] **       Note that journaling defaults to off for 32 bit and is currently off.
+2015-04-27T16:31:40.907-0400 I CONTROL  [initandlisten] **       See http://dochub.mongodb.org/core/32bit
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] 
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is 'always'.
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] 
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] 
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] db version v3.0.1
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] git version: 534b5a3f9d10f00cd27737fbcd951032248b5952
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] build info: Linux build8.nj1.10gen.cc 2.6.32-431.3.1.el6.x86_64 #1 SMP Fri Jan 3 21:39:27 UTC 2014 x86_64 BOOST_LIB_VERSION=1_49
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] allocator: tcmalloc
+2015-04-27T16:31:40.908-0400 I CONTROL  [initandlisten] options: { net: { port: 27018 }, storage: { dbPath: "/home/accts/km637/mongodb-linux-i686-3.0.1/bin/data_at_rattlesnake_27018" } }
+2015-04-27T16:31:40.946-0400 I NETWORK  [initandlisten] waiting for connections on port 27017
+2015-04-27T16:31:40.952-0400 I NETWORK  [initandlisten] waiting for connections on port 27018
+2015-04-27T16:31:58.439-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:33694 #1 (1 connection now open)
+2015-04-27T16:31:58.790-0400 I NETWORK  [conn1] end connection 131.247.2.242:33694 (0 connections now open)
+2015-04-27T16:32:00.406-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:41792 #1 (1 connection now open)
+2015-04-27T16:32:00.935-0400 I NETWORK  [conn1] end connection 131.247.2.242:41792 (0 connections now open)
+2015-04-27T16:32:06.418-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:33741 #2 (1 connection now open)
+2015-04-27T16:32:06.541-0400 I NETWORK  [conn2] end connection 131.247.2.242:33741 (0 connections now open)
+2015-04-27T16:32:08.415-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:41826 #2 (1 connection now open)
+2015-04-27T16:32:08.635-0400 I NETWORK  [conn2] end connection 131.247.2.242:41826 (0 connections now open)
+2015-04-27T16:32:13.271-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:33765 #3 (1 connection now open)
+2015-04-27T16:32:13.383-0400 I NETWORK  [conn3] end connection 131.247.2.242:33765 (0 connections now open)
+2015-04-27T16:32:15.096-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:41866 #3 (1 connection now open)
+2015-04-27T16:32:15.257-0400 I NETWORK  [conn3] end connection 131.247.2.242:41866 (0 connections now open)
+2015-04-27T16:32:20.489-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:33813 #4 (1 connection now open)
+2015-04-27T16:32:20.592-0400 I NETWORK  [conn4] end connection 131.247.2.242:33813 (0 connections now open)
+2015-04-27T16:32:21.966-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:41896 #4 (1 connection now open)
+2015-04-27T16:32:22.092-0400 I NETWORK  [conn4] end connection 131.247.2.242:41896 (0 connections now open)
+2015-04-27T16:32:26.559-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:33843 #5 (1 connection now open)
+2015-04-27T16:32:26.685-0400 I NETWORK  [conn5] end connection 131.247.2.242:33843 (0 connections now open)
+2015-04-27T16:32:27.986-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:41946 #5 (1 connection now open)
+2015-04-27T16:32:28.196-0400 I NETWORK  [conn5] end connection 131.247.2.242:41946 (0 connections now open)
+2015-04-27T16:32:33.241-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:33890 #6 (1 connection now open)
+2015-04-27T16:32:33.403-0400 I NETWORK  [conn6] end connection 131.247.2.242:33890 (0 connections now open)
+2015-04-27T16:32:35.041-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:41978 #6 (1 connection now open)
+2015-04-27T16:32:35.174-0400 I NETWORK  [conn6] end connection 131.247.2.242:41978 (0 connections now open)
+2015-04-27T16:32:39.909-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:33923 #7 (1 connection now open)
+2015-04-27T16:32:40.050-0400 I NETWORK  [conn7] end connection 131.247.2.242:33923 (0 connections now open)
+2015-04-27T16:32:41.629-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:42012 #7 (1 connection now open)
+2015-04-27T16:32:41.736-0400 I NETWORK  [conn7] end connection 131.247.2.242:42012 (0 connections now open)
+2015-04-27T16:32:47.240-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:41131 #8 (1 connection now open)
+2015-04-27T16:32:47.369-0400 I NETWORK  [conn8] end connection 131.247.2.242:41131 (0 connections now open)
+2015-04-27T16:32:48.804-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:36439 #8 (1 connection now open)
+2015-04-27T16:32:48.918-0400 I NETWORK  [conn8] end connection 131.247.2.242:36439 (0 connections now open)
+2015-04-27T16:32:54.640-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:41174 #9 (1 connection now open)
+2015-04-27T16:32:54.766-0400 I NETWORK  [conn9] end connection 131.247.2.242:41174 (0 connections now open)
+2015-04-27T16:32:56.271-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:36479 #9 (1 connection now open)
+2015-04-27T16:32:56.383-0400 I NETWORK  [conn9] end connection 131.247.2.242:36479 (0 connections now open)
+2015-04-27T16:33:01.570-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:41210 #10 (1 connection now open)
+2015-04-27T16:33:01.690-0400 I NETWORK  [conn10] end connection 131.247.2.242:41210 (0 connections now open)
+2015-04-27T16:33:03.179-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:36514 #10 (1 connection now open)
+2015-04-27T16:33:03.449-0400 I NETWORK  [conn10] end connection 131.247.2.242:36514 (0 connections now open)
+2015-04-27T16:33:08.413-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:41243 #11 (1 connection now open)
+2015-04-27T16:33:08.529-0400 I NETWORK  [conn11] end connection 131.247.2.242:41243 (0 connections now open)
+2015-04-27T16:33:09.787-0400 I NETWORK  [initandlisten] connection accepted from 131.247.2.242:36547 #11 (1 connection now open)
+2015-04-27T16:33:09.894-0400 I NETWORK  [conn11] end connection 131.247.2.242:36547 (0 connections now open)
+2015-04-27T17:19:44.498-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45672 #12 (1 connection now open)
+2015-04-27T17:19:44.504-0400 I NETWORK  [conn12] end connection 128.36.232.38:45672 (0 connections now open)
+2015-04-27T17:19:44.539-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37463 #12 (1 connection now open)
+2015-04-27T17:19:44.545-0400 I NETWORK  [conn12] end connection 128.36.232.38:37463 (0 connections now open)
+2015-04-27T17:19:44.580-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45674 #13 (1 connection now open)
+2015-04-27T17:19:44.581-0400 I NETWORK  [conn13] end connection 128.36.232.38:45674 (0 connections now open)
+2015-04-27T17:19:44.618-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37465 #13 (1 connection now open)
+2015-04-27T17:19:44.619-0400 I NETWORK  [conn13] end connection 128.36.232.38:37465 (0 connections now open)
+2015-04-27T17:19:44.656-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45676 #14 (1 connection now open)
+2015-04-27T17:19:44.658-0400 I NETWORK  [conn14] end connection 128.36.232.38:45676 (0 connections now open)
+2015-04-27T17:19:44.693-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37467 #14 (1 connection now open)
+2015-04-27T17:19:44.695-0400 I NETWORK  [conn14] end connection 128.36.232.38:37467 (0 connections now open)
+2015-04-27T17:19:44.731-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45678 #15 (1 connection now open)
+2015-04-27T17:19:44.732-0400 I NETWORK  [conn15] end connection 128.36.232.38:45678 (0 connections now open)
+2015-04-27T17:19:44.767-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37469 #15 (1 connection now open)
+2015-04-27T17:19:44.769-0400 I NETWORK  [conn15] end connection 128.36.232.38:37469 (0 connections now open)
+2015-04-27T17:19:44.804-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45680 #16 (1 connection now open)
+2015-04-27T17:19:44.806-0400 I NETWORK  [conn16] end connection 128.36.232.38:45680 (0 connections now open)
+2015-04-27T17:19:44.843-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37471 #16 (1 connection now open)
+2015-04-27T17:19:44.844-0400 I NETWORK  [conn16] end connection 128.36.232.38:37471 (0 connections now open)
+2015-04-27T17:19:44.880-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45682 #17 (1 connection now open)
+2015-04-27T17:19:44.882-0400 I NETWORK  [conn17] end connection 128.36.232.38:45682 (0 connections now open)
+2015-04-27T17:19:44.917-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37473 #17 (1 connection now open)
+2015-04-27T17:19:44.919-0400 I NETWORK  [conn17] end connection 128.36.232.38:37473 (0 connections now open)
+2015-04-27T17:19:44.955-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45684 #18 (1 connection now open)
+2015-04-27T17:19:44.956-0400 I NETWORK  [conn18] end connection 128.36.232.38:45684 (0 connections now open)
+2015-04-27T17:19:44.992-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37475 #18 (1 connection now open)
+2015-04-27T17:19:44.994-0400 I NETWORK  [conn18] end connection 128.36.232.38:37475 (0 connections now open)
+2015-04-27T17:19:45.029-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45686 #19 (1 connection now open)
+2015-04-27T17:19:45.030-0400 I NETWORK  [conn19] end connection 128.36.232.38:45686 (0 connections now open)
+2015-04-27T17:19:45.066-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37477 #19 (1 connection now open)
+2015-04-27T17:19:45.068-0400 I NETWORK  [conn19] end connection 128.36.232.38:37477 (0 connections now open)
+2015-04-27T17:19:45.104-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45688 #20 (1 connection now open)
+2015-04-27T17:19:45.105-0400 I NETWORK  [conn20] end connection 128.36.232.38:45688 (0 connections now open)
+2015-04-27T17:19:45.141-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37479 #20 (1 connection now open)
+2015-04-27T17:19:45.142-0400 I NETWORK  [conn20] end connection 128.36.232.38:37479 (0 connections now open)
+2015-04-27T17:19:45.180-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45690 #21 (1 connection now open)
+2015-04-27T17:19:45.181-0400 I NETWORK  [conn21] end connection 128.36.232.38:45690 (0 connections now open)
+2015-04-27T17:19:45.217-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37481 #21 (1 connection now open)
+2015-04-27T17:19:45.218-0400 I NETWORK  [conn21] end connection 128.36.232.38:37481 (0 connections now open)
+2015-04-27T17:19:45.254-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45692 #22 (1 connection now open)
+2015-04-27T17:19:45.255-0400 I NETWORK  [conn22] end connection 128.36.232.38:45692 (0 connections now open)
+2015-04-27T17:19:45.292-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37483 #22 (1 connection now open)
+2015-04-27T17:19:45.294-0400 I NETWORK  [conn22] end connection 128.36.232.38:37483 (0 connections now open)
+2015-04-27T17:19:47.326-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:45694 #23 (1 connection now open)
+2015-04-27T17:19:47.327-0400 I COMMAND  [conn23] CMD: drop test.trades
+2015-04-27T17:19:47.328-0400 I NETWORK  [conn23] end connection 128.36.232.38:45694 (0 connections now open)
+2015-04-27T17:19:47.366-0400 I NETWORK  [initandlisten] connection accepted from 128.36.232.38:37485 #23 (1 connection now open)
+2015-04-27T17:19:47.367-0400 I COMMAND  [conn23] CMD: drop test.trades
+2015-04-27T17:19:47.369-0400 I NETWORK  [conn23] end connection 128.36.232.38:37485 (0 connections now open)
+----------------------------------------
+Building on ports ['27017', '27018']
+Any key to continue: =============================================
+POSTINGmoney
+TRADE OUT:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+WriteResult({ "nInserted" : 1 })
+
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.0426080226898
+-------------------------------------------
+TRADE OUT:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+WriteResult({ "nInserted" : 1 })
+
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.0835518836975
+-------------------------------------------
+DONE POSTINGmoney
+=============================================
+=============================================
+SEARCHING FORstone
+SEARCHING FOR stone:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27017
+0.0365920066833
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.0366148948669
+-------------------------------------------
+SEARCHING FOR stone:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27018
+0.0378501415253
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.074490070343
+-------------------------------------------
+Could not find any matches for stone
+DONE SEARCHING FORstone
+=============================================
+=============================================
+SEARCHING FORgold
+SEARCHING FOR gold:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27017
+0.0386221408844
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.0386438369751
+-------------------------------------------
+SEARCHING FOR gold:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27018
+0.0368158817291
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.0754859447479
+-------------------------------------------
+Could not find any matches for gold
+DONE SEARCHING FORgold
+=============================================
+=============================================
+SEARCHING FORwood
+SEARCHING FOR wood:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27017
+0.037260055542
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.0372838973999
+-------------------------------------------
+SEARCHING FOR wood:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27018
+0.0367081165314
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.0740180015564
+-------------------------------------------
+Could not find any matches for wood
+DONE SEARCHING FORwood
+=============================================
+=============================================
+SEARCHING FORfood
+SEARCHING FOR food:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27017
+0.0370779037476
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.037101984024
+-------------------------------------------
+SEARCHING FOR food:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27018
+0.0380840301514
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.0752131938934
+-------------------------------------------
+Could not find any matches for food
+DONE SEARCHING FORfood
+=============================================
+=============================================
+SEARCHING FORsage
+SEARCHING FOR sage:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27017
+0.0377359390259
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.0377590656281
+-------------------------------------------
+SEARCHING FOR sage:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27018
+0.0367569923401
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.0745451450348
+-------------------------------------------
+Could not find any matches for sage
+DONE SEARCHING FORsage
+=============================================
+=============================================
+SEARCHING FORlamp
+SEARCHING FOR lamp:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27017
+0.0373170375824
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.0373501777649
+-------------------------------------------
+SEARCHING FOR lamp:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27018
+0.0378649234772
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.075254201889
+-------------------------------------------
+Could not find any matches for lamp
+DONE SEARCHING FORlamp
+=============================================
+=============================================
+SEARCHING FORmouse
+SEARCHING FOR mouse:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27017
+0.036474943161
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.0364999771118
+-------------------------------------------
+SEARCHING FOR mouse:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27018
+0.0374598503113
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.0739870071411
+-------------------------------------------
+Could not find any matches for mouse
+DONE SEARCHING FORmouse
+=============================================
+=============================================
+SEARCHING FORpuppy
+SEARCHING FOR puppy:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27017
+0.037437915802
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.0374629497528
+-------------------------------------------
+SEARCHING FOR puppy:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27018
+0.0370621681213
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.0745520591736
+-------------------------------------------
+Could not find any matches for puppy
+DONE SEARCHING FORpuppy
+=============================================
+=============================================
+SEARCHING FORsomething
+SEARCHING FOR something:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27017
+0.0387029647827
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.0387270450592
+-------------------------------------------
+SEARCHING FOR something:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27018
+0.0368931293488
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.0756452083588
+-------------------------------------------
+Could not find any matches for something
+DONE SEARCHING FORsomething
+=============================================
+=============================================
+SEARCHING FORsale
+SEARCHING FOR sale:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27017
+0.0368440151215
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27017
+0.0368671417236
+-------------------------------------------
+SEARCHING FOR sale:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+
+LOCAL TIMING OF rattlesnake.zoo.cs.yale.edu27018
+0.0385119915009
+
+ TIMING UP TO: rattlesnake.zoo.cs.yale.edu27018
+0.0754060745239
+-------------------------------------------
+Could not find any matches for sale
+DONE SEARCHING FORsale
+=============================================
+Any key to quit: CLEARED:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27017/test
+true
+
+CLEARED:MongoDB shell version: 3.0.1
+connecting to: rattlesnake.zoo.cs.yale.edu:27018/test
+true
+
+2015-04-27T17:19:47.379-0400 I CONTROL  
+2015-04-27T17:19:47.379-0400 W CONTROL  32-bit servers don't have journaling enabled by default. Please use --journal if you want durability.
+2015-04-27T17:19:47.379-0400 I CONTROL  
+killing process with pid: 11559
+killing process with pid: 11560
+2015-04-27T17:19:47.385-0400 I CONTROL  [signalProcessingThread] got signal 15 (Terminated), will terminate after current cmd ends
+2015-04-27T17:19:47.385-0400 I CONTROL  [signalProcessingThread] now exiting
+2015-04-27T17:19:47.385-0400 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2015-04-27T17:19:47.385-0400 I NETWORK  [signalProcessingThread] closing listening socket: 6
+2015-04-27T17:19:47.385-0400 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2015-04-27T17:19:47.385-0400 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2015-04-27T17:19:47.385-0400 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2015-04-27T17:19:47.385-0400 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2015-04-27T17:19:47.385-0400 I NETWORK  [signalProcessingThread] shutdown: going to close sockets...
+2015-04-27T17:19:47.385-0400 I NETWORK  [signalProcessingThread] shutdown: going to close sockets...
+2015-04-27T17:19:47.385-0400 I STORAGE  [signalProcessingThread] shutdown: waiting for fs preallocator...
+2015-04-27T17:19:47.385-0400 I STORAGE  [signalProcessingThread] shutdown: closing all files...
+2015-04-27T17:19:47.392-0400 I STORAGE  [signalProcessingThread] closeAllFiles() finished
+2015-04-27T17:19:47.392-0400 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2015-04-27T17:19:47.392-0400 I STORAGE  [signalProcessingThread] closeAllFiles() finished
+2015-04-27T17:19:47.392-0400 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2015-04-27T17:19:47.394-0400 I CONTROL  [signalProcessingThread] dbexit:  rc: 0
+2015-04-27T17:19:47.394-0400 I CONTROL  [signalProcessingThread] dbexit:  rc: 0

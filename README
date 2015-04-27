@@ -120,3 +120,52 @@ python configure_clusters.py -nodes nodes.txt;
 
 #create ring list for every cluster -> all rings saved locally into a ring folder
 python rings.py --min 2 --max 20
+
+================================================================================
+============================== Trading System ==================================
+================================================================================
+
+# We can run our basic Crux-ified MongoDB trading system by calling:
+
+python trader.py ports.txt rings.txt instructions.txt binpath
+
+# on each participant node, where binpath is the bin directory of MongoDB. Note
+# that all of the necessary config files must be formed for given node A: 
+
+# 	ports.txt, containing a line for each ring centered on A, specifying
+# 	the port which the instance of MongoDB for that ring should use;
+
+# 	rings.txt, containing a line for each ring that A is involved in, consisting
+# 	of the hostname and port (whitespace-delineated) on which that ring is
+# 	running;
+
+#	and instructions.txt, containing the actual transaction instructions for each
+# 	node to carry out (more below).
+
+# Given these specifications, the trading program will initialize N instances of
+# MongoDB, where N is the number of lines/ports in ports.txt, and it will
+# also create N data folders. It will then wait for input before running
+# the commands in instructions.txt (to ensure synchronicity).
+
+
+# INSTRUCTIONS:
+# We interact with our trading algorithm through a simple API, using commands
+# specified in instructions.txt.  This is obviously best suited for a test
+# environment; in practical deployments it would be a simple measure to
+# use real-time input instead of a set of instructions.
+
+# The API is specified here:
+
+ 	post [BUY/SELL] [ITEM]
+
+# 	Posts a BUY or SELL request for item ITEM to all rings in rings.txt, using
+# 	the Crux algorithm (starting with the smallest rings and expanding outward
+# 	to preserve locality).
+
+ 	find [ITEM]
+
+# 	Searches for a request containing item ITEM using the Crux algorithm on
+# 	rings in rings.txt.  To preserve locality, when the item is found in a 
+# 	given ring, it is immediately returned and the search is halted.
+
+
