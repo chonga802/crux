@@ -1,7 +1,26 @@
 The purpose of this code is to collect data and instantiate a Crux-ified
-version of MongoDB on PlanetLab. Following are the sequence of commands
-needed to collect timing data, configure network setup, and deploy the
-Mongo databases on remote PlanetLab hosts.
+version of MongoDB on PlanetLab. At a high level, the Crux protocol is a 
+means of preserving locality in communication in a large distributed
+network by instantiating smaller copies of the distributed system on
+subsets of the larger network.
+
+For more information about Crux, please refer to the original paper by
+Nowlan, Faleiro, and Ford at http://arxiv.org/abs/1405.0637
+
+Please note that a couple major assumptions are made about the structure
+of the Crux network and about communication. They are as follows.
+ 1. That communication A -> B takes the same time as messages from B -> A
+ 2. That the triangle inequality holds in all messaging, that is:
+    	 (A -> B -> C) >= (A -> C)
+ 3. Rings are inclusive. See the original Crux paper on
+    http://arxiv.org/pdf/1405.0637v1.pdf for more detail.
+ 4. Given a landmark node running multiple rings, if there are no new nodes
+    that would join ring i+1 that do not appear in some ring <= i, then we
+    do not instantiate an i+1 ring, and continue onto i+2.
+
+Following are the sequence of commands needed to collect timing data,
+configure network setup, and deploy the Mongo databases on remote PlanetLab 
+hosts.
 
 ============================================================================
 ======================= Initial network creation ===========================
@@ -40,6 +59,11 @@ python makeHostPairList.py -nodes nodes.txt
 ============================================================================
 ======================== Timing Data Collection ============================
 ============================================================================
+
+# Before doing anything else, it may be helpful to remove any old files that
+#  remain on planetlab from prior testing. To do this, simply run the script
+
+python cleanPL.py -nodes nodes.txt;
 
 # All timing data must be collected between the nodes in the network, so we
 #  move all necessary files to planetlab using the filesToPlanetLab.py
@@ -86,8 +110,9 @@ python recoverPings.py -nodes nodes.txt
 #  simply determining which nodes will have a ring that we communicate with.
 #
 # The bunches will be saved in a local directory called bunches, and each bunch
-#  is saved in a text file specified as '<node_name>_bunch.txt'. If there is
-#  not already a bunches directory, it should be created.
+#  is saved in a text file specified as '<node_name>_bunch.txt'. The bunches
+#  directory will be cleaned then recreated during execution by the script.
+#
 # Bunches are saved as text file in the <node> <ping time> format, one per line
 #  like below:
 #
@@ -96,7 +121,6 @@ python recoverPings.py -nodes nodes.txt
 #	N5  129
 #	etc.
 
-mkdir bunches.txt;
 python createBunches.py -nodes nodes.txt -ping plStuff/pings.txt -rank rank.txt;
 
 #      CLUSTERS:
