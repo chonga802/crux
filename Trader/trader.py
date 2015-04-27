@@ -120,6 +120,7 @@ def post_all (mpath, bunch, t_type, t_id, localhost) :
 	for b in bunch:
 		post_instance(mpath, b[0], b[1], t_type, t_id, localhost)
 
+		end_t = time.time()
 		print "\n TIMING UP TO: "+b[0]+b[1]
 		print end_t-start_t
 		print "-------------------------------------------"
