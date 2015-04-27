@@ -1,0 +1,24 @@
+Configuring a Crux network on planetlab:
+
+1. call get_slice_nodes.py to collect nodes in your slice from planetlab (will prompt for password)
+   $ python get_slice_nodes.py nodes.txt <pl_username>
+
+1a. Nodes die regularly on planetlab, so run the removeDeadNodes.py script on nodes.txt to return the living nodes
+
+1b. run landmark.py on nodes.txt to create a new file listing the landmark value of each node
+
+2. create list of planetlab pairs using makeHostPairList.py on list of nods from (1) to create pairs.txt
+   $ python makeHostPairList.py nodes.txt
+
+3. send files to planetlab for info collection using filesToPlanetLab.py
+   $ python filesToPlanetLab.py -nodes nodes.txt
+
+4. collect ping data between nodes using pingNodePairs.sh with pair data (must be run locally, we should automate ssh'ing into pl nodes to run this script)
+   $ ./pingNodePairs.sh pairs.txt
+
+5. construct bunch
+
+6. collect ping timing data from planetlab after timing is finished using recover_pings.py
+   $ python recover_pings.py -nodes nodes.txt
+
+6. 

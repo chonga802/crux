@@ -1,35 +1,122 @@
-Run this sequence of commands in order:
+The purpose of this code is to collect data and instantiate a Crux-ified
+version of MongoDB on PlanetLab. Following are the sequence of commands
+needed to collect timing data, configure network setup, and deploy the
+Mongo databases on remote PlanetLab hosts.
 
-#gets list of planet lab nodes -> creates nodes.txt
-python get_slice_nodes.py nodes.txt christine.hong@yale.edu 
+============================================================================
+======================= Initial network creation ===========================
+============================================================================
 
-#remove dead nodes -> creates aliveNodes.txt
-python removeDeadNodes.py -nodes nodes.txt
+# Initially collect hostname information for all nodes on planetlab slice
+#  using the get_slice_nodes.py script. Takes in an output folder and the
+#  username of the planetlab account. Will prompt for a password on call.
 
-#assigns landmark value to each node in nodes.txt -> creates rank.txt
-python landmark.py -file nodes.txt -b 3 
+python get_slice_nodes.py nodes.txt christine.hong@yale.edu; 
 
-#constructs all pairs of nodes -> creates pairs.txt
-python makeHostPairList.py nodes.txt
+# After collecting all nodes, run the following script to remove any nodes
+#  which are dead/unreachable. The list of live nodes will be saved in a new
+#  text file called 'aliveNodes.txt', which should be either renamed to
+#  nodes.txt or explicitly passed in as the node list in future calls.
 
-#puts all the files onto the planet lab nodes (or just do it from folder)
-python filesToPlanetLab.py -item pairs.txt -nodes nodes.txt
-python filesToPlanetLab.py -item pingNodePairs.sh -nodes nodes.txt
-python filesToPlanetLab.py -item rank.txt -nodes nodes.txt
-python filesToPlanetLab.py -item bunch.py -nodes nodes.txt
+python removeDeadNodes.py -nodes nodes.txt;
+mv aliveNodes.txt nodes.txt;	 # rename aliveNodes to nodes
 
-or 
+# To assign landmark values/rank to all nodes, run the landmark.py script
+#  on the nodes file. The -b flag represents the probability of upgrading
+#  the rank of a node. This script creates new file 'rank.txt'.
+#
+#  NOTE: rank information will not be used until bunches are constructed
+#    after the collection of timing data.
 
+python landmark.py -file nodes.txt -b 4;
+
+# Construct a text file containing all pairs of planetlab nodes in the
+#  network. This will be used to determine who pings who for timing
+#  data collection. Output is a file 'pairs.txt'.
+
+python makeHostPairList.py -nodes nodes.txt
+
+
+============================================================================
+======================== Timing Data Collection ============================
+============================================================================
+
+# All timing data must be collected between the nodes in the network, so we
+#  move all necessary files to planetlab using the filesToPlanetLab.py
+#  script. The -item flag specifies files to move, and may be used to specify
+#  a directory to copy. For simplicity, simply move 'pairs.txt' into the 
+#  directory named plStuff and copy plStuff over to planetlab nodes specified
+#  by the -nodes flag.
+
+mv pairs.txt plStuff/
 python filesToPlanetLab.py -item plStuff -nodes nodes.txt
 
-#sshes into all nodes and runs command to create pings.txt and create bunch.txt
-sh pingAndBunch.sh nodes.txt
+# Once all files are transferred over, run the pingAndBunch.py script to
+#  ssh into each node in nodes.txt and execute timing collection. Upon
+#  calling this script, everything will sleep until all ping data is collected.
+#  Creates 'pings.txt' in the plStuff folder on all planetlab nodes.
+#
+# Timing data is collected via the pingNodePairs.sh shell script in plStuff,
+#  which requires the 'pairs.txt' file created above.
+#
+# WARN: running this script will open up ssh subprocesses for each node given
+#   in nodes.txt. Please do not run multiple times simultaneously and wait to
+#   continue until all processes have terminated.
 
-#return to local computer and recover bunches -> all bunches saved locally to pl_pings folder
-python recover_bunches.py -nodes nodes.txt
+python pingAndBunch.py -nodes nodes.txt
 
-#looks at bunches in pl_pings to create clusters-> all clusters saved locally to clusters folder
-python configure_clusters.py -nodes nodes.txt
+# Once all ping data is collected remotely, run the recoverPings python script
+#  to collect all the ping data locally and compile it into one local 'pings.txt'.
+#
+# NOTE: recoverPings.py creates a new local directory 'pl_pings' where all ping
+#   data will be stored during processing. Once execution finishes, all the data
+#   collected is removed by the script and all that is left is 'pl_pings/pings.txt'
+
+python recoverPings.py -nodes nodes.txt
+
+================================================================================
+=============================== Ring Construction ==============================
+================================================================================
+
+#	BUNCHES:
+# After all timing data is collected, we use the ping times and the ranks
+#  calculated in setup to determine a bunch for each node in the network.
+#  A node's bunch consists of all other nodes with which the given node will
+#  interact with. At this stage we do not determine which rings to join, we are
+#  simply determining which nodes will have a ring that we communicate with.
+#
+# The bunches will be saved in a local directory called bunches, and each bunch
+#  is saved in a text file specified as '<node_name>_bunch.txt'. If there is
+#  not already a bunches directory, it should be created.
+# Bunches are saved as text file in the <node> <ping time> format, one per line
+#  like below:
+#
+#	N1  23
+#	N2  48
+#	N5  129
+#	etc.
+
+mkdir bunches.txt;
+python createBunches.py -nodes nodes.txt -ping plStuff/pings.txt -rank rank.txt;
+
+#      CLUSTERS:
+# Bunches are then used to create the cluster for each node. A cluster is in
+#  some ways the opposite of a bunch: the bunch is all nodes that a node will
+#  interact with, whereas a cluster consists of the nodes which will interact
+#  with the host node's rings.
+#
+# All cluster data will be stored in a directory called 'clusters' which is
+#  created by the script after removing all old cluster data. Clusters for each
+#  node are saved with the names '<node_name>_cluster.txt'.
+# The files are formatted as a list of <node> <ping time> pairs, one on each line
+#  in increasing order of ping time. E.g,
+#
+#	A  13.5
+#	B  29.3
+#	C  107.2
+#	etc.
+
+python configure_clusters.py -nodes nodes.txt;
 
 #create ring list for every cluster -> all rings saved locally into a ring folder
 python rings.py --min 2 --max 20
