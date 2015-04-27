@@ -1,5 +1,4 @@
-ladybug.zoo.cs.yale.edu 27017
-ladybug.zoo.cs.yale.edu 27018
-ladybug.zoo.cs.yale.edu 27019
-chameleon.zoo.cs.yale.edu 27017
-chameleon.zoo.cs.yale.edu 27018
+perch.zoo.cs.yale.edu 27017
+perch.zoo.cs.yale.edu 27018
+rattlesnake.zoo.cs.yale.edu 27017
+rattlesnake.zoo.cs.yale.edu 27018

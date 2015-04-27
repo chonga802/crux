@@ -53,7 +53,7 @@ def build_rings (mpath, host, portlist):
 
 		# out = subprocess.check_output(["echo", "Hello World!"])
 
-		p = subprocess.Popen([mpath + '/mongod', '--dbpath', mypath, '--port', port], stdout=subprocess.PIPE)
+		subprocess.Popen([mpath + '/mongod', '--dbpath', mypath, '--port', port])#, stdout=subprocess.PIPE)
 		# result = p.communicate()[0]
 		# print "STARTED:" + result
 
@@ -94,7 +94,7 @@ myCursor.forEach(printjson);"
 
 	p = subprocess.Popen([mpath + "/mongo", "--port", port, "--host", host, "--eval", command], stdout=subprocess.PIPE)
 	result = p.communicate()[0]
-	print "FINDING TRADE:" + result
+	print "SEARCHING FOR " + t_id + ":" + result
 
 	if "object" in result:
 		return result
@@ -115,6 +115,7 @@ def post_all (mpath, bunch, t_type, t_id, localhost) :
 def find_all (mpath, bunch, t_id):
 
 	result = "NO MATCH"
+	start_t = time.time()
 
 	for b in bunch:
 		result = find_instance(mpath, b[0], b[1], t_id)
@@ -180,15 +181,18 @@ def run_instructions (fn, mpath, localhost, portlist, bunch):
 
 def main(argv):
 
-	if len(argv) < 3:
-		print "Call as trader.py [port file] [bunch file] [instructions file]"
+	if len(argv) < 4:
+		print "Call as trader.py [port file] [bunch file] [instructions file] [mongo loc (def for default)] "
 		return
 
 	portlist = parse_ports(argv[0])
 	bunch = parse_bunch(argv[1])
 
 	# Location of mongod program
-	mpath = "/home/accts/km637/mongodb-linux-i686-3.0.1/bin"
+	if argv[3] == "def" or argv[3] == "d":
+		mpath = "/home/accts/km637/mongodb-linux-i686-3.0.1/bin"
+	else:
+		mpath = argv[3]
 
 	# Local host name
 	localhost = socket.gethostname()

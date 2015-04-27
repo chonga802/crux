@@ -1,0 +1,2 @@
+post SELL stone
+post SELL gold

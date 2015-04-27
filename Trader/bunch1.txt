@@ -1,2 +1,4 @@
-chameleon.zoo.cs.yale.edu 27017
-chameleon.zoo.cs.yale.edu 27018
+rattlesnake.zoo.cs.yale.edu 27017
+rattlesnake.zoo.cs.yale.edu 27018
+planetlab2.csee.usf.edu 27017
+planetlab2.csee.usf.edu 27018

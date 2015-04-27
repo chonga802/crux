@@ -1,1 +1,4 @@
-post SELL gold
+post SELL ivory
+find stone
+find gold
+find tea
