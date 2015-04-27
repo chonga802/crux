@@ -112,10 +112,16 @@ myCursor.forEach(printjson);"
 # Post given trade in all rings of bunch
 def post_all (mpath, bunch, t_type, t_id, localhost) :
 
+	print "============================================="
+	print "POSTING" + t_id
+
 	for b in bunch:
 		post_instance(mpath, b[0], b[1], t_type, t_id, localhost)
 
 	return
+
+	print "DONE POSTING" + t_id
+	print "============================================="
 
 # Search all rings until given trade found
 def find_all (mpath, bunch, t_id):
