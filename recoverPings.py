@@ -16,8 +16,6 @@ args = parser.parse_args()
 nodeFile = args.nodes
 nodes = []
 
-str.isspace('')
-
 f = open(nodeFile, 'r')
 for line in f:
     nodes.append(line.rstrip('\n'))
