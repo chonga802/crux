@@ -119,6 +119,11 @@ def find_all (mpath, bunch, t_id):
 
 	for b in bunch:
 		result = find_instance(mpath, b[0], b[1], t_id)
+		end_t = time.time()
+
+		print "\n TIMING UP TO: "+b[0]+b[1]
+		print end_t-start_t
+		print "======================================================="
 
 		# As soon as item found, stop searching rings
 		if result != "NO MATCH":
