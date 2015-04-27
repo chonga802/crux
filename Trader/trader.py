@@ -92,9 +92,15 @@ def find_instance (mpath, host, port, t_id):
 	command = "var myCursor = db.trades.find({object: '"+t_id+"'}); \
 myCursor.forEach(printjson);"
 
+	start_t = time.time()
+
 	p = subprocess.Popen([mpath + "/mongo", "--port", port, "--host", host, "--eval", command], stdout=subprocess.PIPE)
 	result = p.communicate()[0]
 	print "SEARCHING FOR " + t_id + ":" + result
+
+	end_t = time.time()
+	print "LOCAL TIMING OF " + host + port
+	print end_t-start_t
 
 	if "object" in result:
 		return result
@@ -117,13 +123,16 @@ def find_all (mpath, bunch, t_id):
 	result = "NO MATCH"
 	start_t = time.time()
 
+	print "============================================="
+	print "SEARCHING FOR" + t_id
+
 	for b in bunch:
 		result = find_instance(mpath, b[0], b[1], t_id)
 		end_t = time.time()
 
 		print "\n TIMING UP TO: "+b[0]+b[1]
 		print end_t-start_t
-		print "======================================================="
+		print "-------------------------------------------"
 
 		# As soon as item found, stop searching rings
 		if result != "NO MATCH":
@@ -142,6 +151,10 @@ def find_all (mpath, bunch, t_id):
 
 			if line and line[0] == '"user"':
 				print "DIRECTLY CONTACTING " + line[2] + " TO ARRANGE TRANSACTION"
+
+	print "DONE SEARCHING FOR" + t_id
+	print "============================================="
+
 
 	return
 
