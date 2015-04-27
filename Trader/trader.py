@@ -115,13 +115,20 @@ def post_all (mpath, bunch, t_type, t_id, localhost) :
 	print "============================================="
 	print "POSTING" + t_id
 
+	start_t = time.time()
+
 	for b in bunch:
 		post_instance(mpath, b[0], b[1], t_type, t_id, localhost)
 
-	return
+		print "\n TIMING UP TO: "+b[0]+b[1]
+		print end_t-start_t
+		print "-------------------------------------------"
 
 	print "DONE POSTING" + t_id
 	print "============================================="
+
+	return
+
 
 # Search all rings until given trade found
 def find_all (mpath, bunch, t_id):

@@ -1,4 +1,3 @@
-post SELL ivory
 find stone
 find tea
 find ivory

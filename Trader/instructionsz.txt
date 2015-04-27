@@ -1,5 +1,11 @@
-post SELL stone
-post SELL gold
+post SELL money
 find stone
-find tea
-find ivory
+find gold
+find wood
+find food
+find sage
+find lamp
+find mouse
+find puppy
+find something
+find sale
