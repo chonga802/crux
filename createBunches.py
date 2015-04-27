@@ -36,6 +36,9 @@ for line in r:
     rank[words[0]] = words[1]
 r.close()
 
+subprocess.call(['rm', '-r', 'bunches'])
+subprocess.call(['mkdir', 'bunches'])
+
 # construct bunches from ping file
 for node in nodes:
     npings = []
