@@ -8,3 +8,6 @@ cfgs
 pairs.txt
 tmp
 rank.txt
+bunch_cfgs
+ring_cfgs
+shard_config_fmt
