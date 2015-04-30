@@ -1,11 +1,4 @@
 post SELL money
+find money
 find stone
-find gold
-find wood
-find food
-find sage
-find lamp
-find mouse
-find puppy
-find something
-find sale
+find cheese

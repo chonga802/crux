@@ -1,3 +1,4 @@
 post SELL stone
-find gold
+find money
+find stone
 find cheese

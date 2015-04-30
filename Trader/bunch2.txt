@@ -1,4 +1,2 @@
-perch.zoo.cs.yale.edu 27017
-perch.zoo.cs.yale.edu 27018
-rattlesnake.zoo.cs.yale.edu 27017
-rattlesnake.zoo.cs.yale.edu 27018
+scorpion.zoo.cs.yale.edu 27017 27019
+scorpion.zoo.cs.yale.edu 27020 27022
