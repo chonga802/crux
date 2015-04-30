@@ -61,7 +61,7 @@ for node in nodes:
         host = hostping.split(' ')[0]
         ping = hostping.split(' ')[1]
         r = rank[host]
-        if r > maxRank:
+        if r >= maxRank:
             bunch.append((host,ping))
             maxRank = r
     with open('bunches/'+node+'_bunch.txt','w') as fout:
